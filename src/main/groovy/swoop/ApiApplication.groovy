@@ -1,5 +1,6 @@
 package swoop
 
+import groovy.util.XmlSlurper
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.web.bind.annotation.RequestMapping
@@ -29,3 +30,15 @@ class MathController {
     }
 }
 
+@RestController
+@RequestMapping('/time')
+class TimeController {
+    
+    @RequestMapping(value = '/now')
+    def Now() {
+        def endpoint = 'http://api.timezonedb.com/v2/get-time-zone?key=JC3H0WOZH2YV&by=zone&zone=MST'
+        def xml = new XmlSlurper().parse(endpoint)
+
+        [timezone: xml.zoneName.text(), time: xml.formatted.text()]
+    }
+}

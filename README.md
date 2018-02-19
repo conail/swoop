@@ -8,7 +8,9 @@ A RESTful web service written in Groovy.  Uses:
 
 ## Time API
 
-WaitTime API isn't available publicly anymore.
+WaitTime API isn't available publicly anymore.  An alternative was found at [timezonedb](http://timezonedb.com).  It requires registration and returns XML.
+
+Groovy's XMLSlurper is used to extract the time and timezone.
 
 ## Docker
 
