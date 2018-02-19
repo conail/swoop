@@ -28,6 +28,8 @@ To push a container to Docker Hub (assumes docker toolchain is installed), use:
 ./gradlew buildDocker -Ppush
 ```
 
+Plugin: [gradle-docker](https://github.com/Transmode/gradle-docker).
+
 ## Service Design
 
 Classes were not extracted into their own files, owing to their brevity.
@@ -56,3 +58,4 @@ Cache invalidation is expected on every call to the Time endpoint because of it'
 ./gradlew buildDocker
 docker run conail/swoop -p 8080:8080
 ```
+
