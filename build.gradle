@@ -7,9 +7,11 @@ buildscript {
   }
   dependencies {
     classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    classpath 'se.transmode.gradle:gradle-docker:1.2'
   }
 }
 
+apply plugin: 'docker'
 apply plugin: 'groovy'
 apply plugin: 'org.springframework.boot'
 
@@ -26,3 +28,15 @@ dependencies {
   testCompile 'org.springframework.boot:spring-boot-starter-test'
   compile 'org.springframework.boot:spring-boot-starter-web'
 }
+
+task buildDocker(type: Docker) {
+  baseImage = 'develar/java:latest'
+  push = project.hasProperty('push')
+  tag = 'conail/swoop'
+  addFile {
+    from jar
+    rename {'app.jar'}
+  }
+  entryPoint(['java', '-Djava.security.egd=file:/dev/./urandom', '-jar', '/app.jar'])
+}
+buildDocker.dependsOn(build)
