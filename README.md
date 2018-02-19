@@ -30,6 +30,8 @@ To push a container to Docker Hub (assumes docker toolchain is installed), use:
 
 Plugin: [gradle-docker](https://github.com/Transmode/gradle-docker).
 
+Docker Hub Repo: [https://hub.docker.com/r/conail/swoop/](https://hub.docker.com/r/conail/swoop/)
+
 ## Service Design
 
 Classes were not extracted into their own files, owing to their brevity.
